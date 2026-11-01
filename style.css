@@ -1,0 +1,869 @@
+/* ==========================================================================
+   INVENTRACK - PIXEL-ALIGNED SAAS DESIGN SYSTEM
+   Exact Match to UI Reference Specification
+   Typography: 'Inter', 'Plus Jakarta Sans', -apple-system, sans-serif
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-app: #ffffff;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-search: #f1f5f9;
+  --text-main: #1e293b;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --primary-blue: #2563eb;
+  --primary-blue-light: #dbeafe;
+  --border-subtle: #e2e8f0;
+  --border-light: #f1f5f9;
+}
+
+/* Base resets & typography */
+html, body, [class*="css"], .stApp {
+  font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color: #1e293b !important;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Completely hide and remove the sidebar across the entire application */
+section[data-testid="stSidebar"],
+div[data-testid="stSidebar"],
+[data-testid="stSidebarCollapsedControl"],
+div[data-testid="collapsedControl"],
+button[data-testid="stSidebarCollapseButton"],
+button[data-testid="baseButton-headerNoPadding"],
+[data-testid="stSidebarNav"],
+div[data-testid="stSidebarNav"],
+nav[data-testid="stSidebarNav"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+header[data-testid="stHeader"] {
+  background: transparent !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+}
+
+header[data-testid="stHeader"] [data-testid="stToolbar"] {
+  display: none !important;
+}
+
+.top-bar-container,
+.top-nav-bar-wrapper,
+.top-header-shell,
+.top-header-bar {
+  pointer-events: none !important;
+}
+
+.top-bar-container input,
+.top-bar-container button,
+.top-bar-container [data-testid="stPopover"],
+.top-nav-bar-wrapper input,
+.top-nav-bar-wrapper button,
+.top-nav-bar-wrapper [data-testid="stPopover"] {
+  pointer-events: auto !important;
+}
+
+/* Main container spacing */
+.block-container {
+  padding-top: 1.5rem !important;
+  padding-bottom: 2.5rem !important;
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  max-width: 100% !important;
+}
+
+div[data-testid="stVerticalBlock"] {
+  gap: 0.8rem;
+}
+
+div[data-testid="stVerticalBlock"] > div:has(style) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.block-container > div:first-child {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure pointer-events on buttons and popovers so overlays never block clicks */
+button,
+[data-testid="stButton"] button,
+.stPopover button {
+  pointer-events: auto !important;
+}
+
+/* ==========================================================================
+   1. GLOBAL TOP HEADER BAR & CONTROLS
+   ========================================================================== */
+.top-nav-bar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.8rem !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.sidebar-brand-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 0.4rem 0.2rem 1.0rem 0.2rem !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.top-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.top-hamburger {
+  font-size: 1.25rem !important;
+  color: #475569 !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+  padding: 4px !important;
+}
+
+.top-logo-box {
+  width: 30px !important;
+  height: 30px !important;
+  background: #2563eb !important;
+  border-radius: 7px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25) !important;
+}
+
+.top-logo-title {
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: #1e293b !important;
+  letter-spacing: -0.025em !important;
+}
+
+/* Search Input Styling with Magnifier and / Shortcut Pill */
+.st-key-search_query {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+}
+
+.st-key-search_query div[data-baseweb="input"] {
+  position: relative !important;
+  border-radius: 9999px !important;
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  height: 38px !important;
+  padding-left: 36px !important;
+  padding-right: 36px !important;
+  transition: all 0.2s ease !important;
+}
+
+.st-key-search_query div[data-baseweb="input"]::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.st-key-search_query div[data-baseweb="input"]::after {
+  content: "/";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 500;
+  color: #94a3b8;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 1px 6px;
+  pointer-events: none;
+  line-height: 1.2;
+}
+
+.st-key-search_query div[data-baseweb="input"]:focus-within {
+  background-color: #ffffff !important;
+  border-color: #93c5fd !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+.st-key-search_query input {
+  font-size: 0.88rem !important;
+  color: #1e293b !important;
+  background: transparent !important;
+}
+
+.st-key-search_query input::placeholder {
+  color: #64748b !important;
+}
+
+/* Profile Popover Avatar Styling */
+.st-key-user_profile_popover {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+.st-key-user_profile_popover button {
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  max-width: 34px !important;
+  border-radius: 50% !important;
+  background: #0284c7 !important;
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 1px 3px rgba(2, 132, 199, 0.25) !important;
+  pointer-events: auto !important;
+}
+
+.st-key-user_profile_popover button p {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+.st-key-user_profile_popover button:hover {
+  background: #0369a1 !important;
+  background-color: #0369a1 !important;
+  color: #ffffff !important;
+}
+
+.top-help-icon {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid #94a3b8 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  cursor: pointer !important;
+}
+
+/* ==========================================================================
+   2. TOP NAVIGATION TABS BAR (Pixel-Aligned Horizontal SaaS Tabs)
+   ========================================================================== */
+
+/* Top Tab Buttons - Clean, borderless slate button */
+.st-key-top_tab_dashboard button,
+.st-key-top_tab_inventory button,
+.st-key-top_tab_transactions button,
+.st-key-top_tab_data_import button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  padding: 0 14px !important;
+  border-radius: 9px !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  background-color: transparent !important;
+  background: transparent !important;
+  color: #475569 !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.st-key-top_tab_dashboard button *,
+.st-key-top_tab_inventory button *,
+.st-key-top_tab_transactions button *,
+.st-key-top_tab_data_import button * {
+  color: #475569 !important;
+  font-weight: 500 !important;
+  font-size: 0.88rem !important;
+}
+
+/* Material symbol icons inside tab buttons */
+.st-key-top_tab_dashboard button span[data-testid="stIconMaterial"],
+.st-key-top_tab_inventory button span[data-testid="stIconMaterial"],
+.st-key-top_tab_transactions button span[data-testid="stIconMaterial"],
+.st-key-top_tab_data_import button span[data-testid="stIconMaterial"] {
+  color: #64748b !important;
+  font-size: 19px !important;
+}
+
+/* Hover State for Inactive Tabs */
+.st-key-top_tab_dashboard button:hover,
+.st-key-top_tab_inventory button:hover,
+.st-key-top_tab_transactions button:hover,
+.st-key-top_tab_data_import button:hover {
+  background-color: #f1f5f9 !important;
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.st-key-top_tab_dashboard button:hover *,
+.st-key-top_tab_inventory button:hover *,
+.st-key-top_tab_transactions button:hover *,
+.st-key-top_tab_data_import button:hover * {
+  color: #0f172a !important;
+}
+
+.st-key-top_tab_dashboard button:hover span[data-testid="stIconMaterial"],
+.st-key-top_tab_inventory button:hover span[data-testid="stIconMaterial"],
+.st-key-top_tab_transactions button:hover span[data-testid="stIconMaterial"],
+.st-key-top_tab_data_import button:hover span[data-testid="stIconMaterial"] {
+  color: #1e293b !important;
+}
+
+/* Red/Coral low stock badge pill in Inventory button */
+.st-key-top_tab_inventory strong {
+  background-color: #fee2e2 !important;
+  color: #ef4444 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 1px 7px !important;
+  border-radius: 9999px !important;
+  margin-left: 4px !important;
+  display: inline-block !important;
+  line-height: 1.3 !important;
+}
+
+/* Subtle 1px horizontal separator line under the tabs */
+.top-nav-divider {
+  width: 100% !important;
+  height: 1px !important;
+  background-color: #f1f5f9 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  margin-top: 8px !important;
+  margin-bottom: 20px !important;
+}
+
+/* ==========================================================================
+   3. HEADER AREA & PRIMARY ACTION BUTTONS (Record a sale, Import data, Refresh)
+   ========================================================================== */
+.dash-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.dash-subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0 0 1.0rem 0;
+}
+
+/* Global button no-wrap rule */
+div[data-testid="stButton"] button {
+  white-space: nowrap !important;
+}
+
+/* Action button container row */
+div[data-testid="stHorizontalBlock"]:has(.st-key-btn_record_sale),
+div[data-testid="stHorizontalBlock"]:has(button[key="btn_record_sale"]),
+.action-btn-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.st-key-btn_record_sale) > div[data-testid="column"],
+div[data-testid="stHorizontalBlock"]:has(button[key="btn_record_sale"]) > div[data-testid="column"] {
+  width: auto !important;
+  flex: 0 0 auto !important;
+  min-width: unset !important;
+  padding: 0 !important;
+}
+
+/* Primary Action Buttons */
+.st-key-btn_record_sale button,
+div[data-testid="stButton"]:has(button[key="btn_record_sale"]) button {
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border: 1px solid #bfdbfe !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  white-space: nowrap !important;
+  min-width: 130px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  box-shadow: none !important;
+}
+
+.st-key-btn_record_sale button *,
+div[data-testid="stButton"]:has(button[key="btn_record_sale"]) button * {
+  color: #1d4ed8 !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+
+.st-key-btn_import_data button,
+div[data-testid="stButton"]:has(button[key="btn_import_data"]) button {
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+  background-color: #ffffff !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  white-space: nowrap !important;
+  min-width: 125px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.st-key-btn_import_data button *,
+div[data-testid="stButton"]:has(button[key="btn_import_data"]) button * {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+
+.st-key-btn_refresh button,
+div[data-testid="stButton"]:has(button[key="btn_refresh"]) button {
+  color: #1e293b !important;
+  border: 1px solid #e2e8f0 !important;
+  background-color: #ffffff !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  white-space: nowrap !important;
+  min-width: 105px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.st-key-btn_refresh button *,
+div[data-testid="stButton"]:has(button[key="btn_refresh"]) button * {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+
+/* ==========================================================================
+   4. FILTER PILLS & CATEGORY DROPDOWN (Tight Horizontal Container)
+   ========================================================================== */
+div[data-testid="stHorizontalBlock"]:has(.st-key-filter_pill_active),
+div[data-testid="stHorizontalBlock"]:has([class*="st-key-filter_pill_inactive"]),
+div[data-testid="stHorizontalBlock"]:has(button[key="filter_all_time"]),
+.filter-strip-wrapper {
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.st-key-filter_pill_active),
+div[data-testid="stHorizontalBlock"]:has([class*="st-key-filter_pill_inactive"]),
+div[data-testid="stHorizontalBlock"]:has(button[key="filter_all_time"]),
+.filter-strip-wrapper div[data-testid="stHorizontalBlock"] {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.st-key-filter_pill_active) > div[data-testid="column"],
+div[data-testid="stHorizontalBlock"]:has([class*="st-key-filter_pill_inactive"]) > div[data-testid="column"],
+div[data-testid="stHorizontalBlock"]:has(button[key="filter_all_time"]) > div[data-testid="column"],
+.filter-strip-wrapper div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {
+  width: auto !important;
+  min-width: unset !important;
+  flex: 0 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Active filter pill */
+.st-key-filter_pill_active button,
+.filter-pill-active button,
+.filter-pill-active div[data-testid="stButton"] button {
+  background-color: #dbeafe !important;
+  color: #1e40af !important;
+  border: 1px solid #bfdbfe !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  height: 38px !important;
+  padding: 0 14px !important;
+  min-width: unset !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+}
+
+.st-key-filter_pill_active button *,
+.filter-pill-active button *,
+.filter-pill-active div[data-testid="stButton"] button * {
+  color: #1e40af !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+
+/* Inactive filter pill */
+div[class*="st-key-filter_pill_inactive"] button,
+.filter-pill-inactive button,
+.filter-pill-inactive div[data-testid="stButton"] button {
+  background-color: #ffffff !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  height: 38px !important;
+  padding: 0 14px !important;
+  min-width: unset !important;
+  white-space: nowrap !important;
+  box-shadow: none !important;
+}
+
+div[class*="st-key-filter_pill_inactive"] button *,
+.filter-pill-inactive button *,
+.filter-pill-inactive div[data-testid="stButton"] button * {
+  color: #475569 !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+}
+
+div[class*="st-key-filter_pill_inactive"] button:hover,
+.filter-pill-inactive button:hover {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  color: #1e293b !important;
+}
+
+div[class*="st-key-filter_pill_inactive"] button:hover *,
+.filter-pill-inactive button:hover * {
+  color: #1e293b !important;
+}
+
+/* Category selectbox adjacent placement */
+div[data-testid="stHorizontalBlock"]:has(.st-key-filter_pill_active) div[data-testid="stSelectbox"],
+div[data-testid="stHorizontalBlock"]:has([class*="st-key-filter_pill_inactive"]) div[data-testid="stSelectbox"],
+.st-key-select_cat_pill,
+.filter-strip-wrapper div[data-testid="stSelectbox"] {
+  width: 165px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.st-key-select_cat_pill div[data-baseweb="select"],
+.filter-strip-wrapper div[data-testid="stSelectbox"] div[data-baseweb="select"] {
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background-color: #ffffff !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  box-shadow: none !important;
+}
+
+.st-key-select_cat_pill div[data-baseweb="select"] > div,
+.filter-strip-wrapper div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  padding: 0 10px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.st-key-select_cat_pill svg,
+.filter-strip-wrapper div[data-testid="stSelectbox"] svg {
+  color: #64748b !important;
+}
+
+/* ==========================================================================
+   5. ALERT WARNING BANNER (Soft Yellow, Items Running Low)
+   ========================================================================== */
+div[data-testid="stHorizontalBlock"]:has(.st-key-btn_see_low),
+div[data-testid="stHorizontalBlock"]:has(button[key="btn_see_low"]) {
+  background: #fef9c3 !important;
+  border: 1px solid #fef08a !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  align-items: center !important;
+  margin-bottom: 1.2rem !important;
+  gap: 12px !important;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.st-key-btn_see_low) div[data-testid="column"],
+div[data-testid="stHorizontalBlock"]:has(button[key="btn_see_low"]) div[data-testid="column"] {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.alert-banner-yellow {
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.alert-banner-yellow .alert-text {
+  font-size: 0.9rem;
+  color: #854d0e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.alert-banner-yellow .alert-text strong {
+  color: #713f12;
+}
+
+.st-key-btn_see_low button,
+div[data-testid="stButton"]:has(button[key="btn_see_low"]) button {
+  background-color: #ffffff !important;
+  color: #1d4ed8 !important;
+  border: 1px solid #fef08a !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 0.82rem !important;
+  padding: 0.35rem 1rem !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  white-space: nowrap !important;
+}
+
+.st-key-btn_see_low button p,
+div[data-testid="stButton"]:has(button[key="btn_see_low"]) button p {
+  color: #1d4ed8 !important;
+  font-weight: 600 !important;
+}
+
+.st-key-btn_dismiss_alert button,
+div[data-testid="stButton"]:has(button[key="btn_dismiss_alert"]) button {
+  background-color: transparent !important;
+  color: #854d0e !important;
+  border: none !important;
+  font-size: 1.1rem !important;
+  padding: 0.2rem 0.5rem !important;
+  box-shadow: none !important;
+  line-height: 1 !important;
+}
+
+.st-key-btn_dismiss_alert button:hover,
+div[data-testid="stButton"]:has(button[key="btn_dismiss_alert"]) button:hover {
+  color: #713f12 !important;
+  background-color: rgba(202, 138, 4, 0.1) !important;
+}
+
+/* ==========================================================================
+   6. 4-METRIC CARD ROW ('Money in and out')
+   ========================================================================== */
+.section-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 2px 0;
+}
+
+.section-subheading {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0 0 14px 0;
+}
+
+.white-metric-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-height: 145px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+}
+
+.white-metric-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.accent-icon-sq {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+}
+
+.sq-blue { background: #e0f2fe; color: #0284c7; }
+.sq-peach { background: #ffedd5; color: #ea580c; }
+.sq-pink { background: #ffe4e6; color: #e11d48; }
+.sq-green { background: #dcfce7; color: #16a34a; }
+.sq-amber { background: #fef3c7; color: #d97706; }
+
+.card-title-text {
+  font-size: 0.86rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.card-big-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.card-bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-green-pill {
+  background-color: #dcfce7 !important;
+  color: #15803d !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 2px 8px !important;
+  border-radius: 9999px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+}
+
+.badge-gray-pill {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border-radius: 9999px !important;
+  font-weight: 500 !important;
+  font-size: 0.75rem !important;
+  padding: 2px 8px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+}
+
+.card-sublabel {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   7. BOTTOM VISUALIZATIONS (Sales this week & Stock on shelves)
+   ========================================================================== */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  padding: 20px !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"]:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+.viz-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 2px 0;
+}
+
+.viz-subtitle {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0 0 12px 0;
+}
+
+/* Floating/inline + Add item button inside Stock on shelves card */
+.st-key-btn_add_item_shelf,
+div[data-testid="stButton"]:has(button[key="btn_add_item_shelf"]) {
+  display: flex !important;
+  justify-content: flex-end !important;
+  margin-top: 4px !important;
+}
+
+.st-key-btn_add_item_shelf button,
+div[data-testid="stButton"]:has(button[key="btn_add_item_shelf"]) button {
+  background-color: #dbeafe !important;
+  color: #1d4ed8 !important;
+  border: none !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  padding: 0.45rem 1.15rem !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+}
+
+.st-key-btn_add_item_shelf button *,
+div[data-testid="stButton"]:has(button[key="btn_add_item_shelf"]) button * {
+  color: #1d4ed8 !important;
+  font-weight: 600 !important;
+}
+
+span[data-testid="stIconMaterial"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+  line-height: 1 !important;
+}
